@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="../css/detil.css" rel="stylesheet" type="text/css" />
+    <link href="../css/layout2.css" rel="stylesheet" type="text/css" />
+    <link href="../lib/swiper/swiper.css" rel="stylesheet" />
+    <script src="../lib/swiper/swiper.js"></script>
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/detil.js"></script>
+</head>
+
+<body>
+    <!-- 第二部分导航开始 -->
+    <div class="nav">
+        <!-- 导航主体开始 -->
+        <div class="navmain">
+            <!-- ul列表开始 -->
+            <div class="navmain-left">
+                <ul>
+                    <li><a href="">小米商城</a><span>|</span></li>
+                    <li><a href="">MIU</a><span>|</span></li>
+                    <li><a href="">IoT</a><span>|</span></li>
+                    <li><a href="">云服务</a><span>|</span></li>
+                    <li><a href="">金融</a><span>|</span></li>
+                    <li><a href="">有品</a><span>|</span></li>
+                    <li><a href="">小爱开放平台</a><span>|</span></li>
+                    <li><a href="">企业团购</a><span>|</span></li>
+                    <li><a href="">资质证照</a><span>|</span></li>
+                    <li><a href="">协议规则</a><span>|</span></li>
+                    <li>
+                        <a href="javascript:;">下载app</a><span>|</span>
+                        <p>
+                            <img src="../images/download.png" />
+                        </p>
+                    </li>
+                    <li><a href="javascript:;">智能生活</a><span>|</span></li>
+                    <li><a href="javascript:;">Select Location</a></li>
+                </ul>
+            </div>
+            <!-- ul列表结束 -->
+
+            <!-- 购物车开始 -->
+            <div class="navmain-right" id="cart">
+                <a href="javascript:; ">
+                    <span class="iconfont icon-gouwuche"></span>
+                    <span>购物车(0)</span>
+                </a>
+            </div>
+            <!-- 购物车结束 -->
+
+            <!-- 登陆注册开始 -->
+            <div class="navmain-middle">
+                <ul>
+                    <li><a href="">登陆</a><span>|</span></li>
+                    <li><a href="">注册</a><span>|</span></li>
+                    <li> <a href="">消息通知</a></li>
+                </ul>
+            </div>
+            <!-- 登陆注册结束 -->
+        </div>
+        <!-- 导航主体结束 -->
+    </div>
+    <!-- 第二部分导航结束 -->
+
+
+    <!-- 下拉开始 -->
+    <div class="wrap">
+        <p style="color: chartreuse;font-size: 20px;margin-left: 15px;" >选择商品</p>
+        <br>
+           <input type="number"   placeholder="数量" style="width: 160px;background-color: white;height: 20px;margin-left: 50px;" >
+              <div style="display: none;"  id="13213214"></div>
+      <button style="display: block;width: 100px;height: 25px;background-color: tomato;color: white;margin-left: 220px;margin-top: -25px;" >加入购物车</button>
+           <button style="display: block; width: 100px;height: 25px;background-color: tomato;color: white;margin-top: -25px;margin-left: 350px;" >查看购物车</button>
+    </div>
+    <!-- 下拉结束 -->
+    <script src=""></script>
+    <script >
+  $('button').eq(0).click(function(){
+            $.ajax({
+                // url:'http://localhost/projiect/cart/interface/addwq.php',
+                url:'../lib/cart/interface/addwq.php',
+                data:{
+                    id:'132132324',
+                    name:'手机',
+                    price:1320,
+                    img:'../images/phoone3.jpg',
+                    num:$('input').val()
+                },
+                success:function(res){
+                    if(res.code){
+                        alert('商品加入成功')
+                        
+                    }    
+                    
+                },
+                dataType:'json'
+            })
+        })
+        //点击查看购物车,进入购物车页面
+        $('button').eq(1).click(function(){
+            location.href="./cart.html"
+        })
+    </script>
+    <!-- 掉下开始 -->
+    <div class="wrap-one">
+        <div class="wrap-one-main">
+            <a href="">小米10至尊纪念版Ⅰ</a>
+            <a href="">小米10Pro</a>
+            <a href="">小米10青春版</a>
+        </div>
+    </div>
+    <!-- 掉下结束 -->
+
+    <!-- 下面版心开始 -->
+    <div class="big">
+        <!-- 左边轮播开始 -->
+        <div class="big-left">
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <img src="../images/xml(1).jpg" style="width:560px;height:560px;" />
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="../images/xml(2).jpg" style="width:560px;height:560px;" />
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="../images/xml(3).jpg" style="width:560px;height:560px;" />
+                    </div>
+                </div>
+                <!-- 如果需要分页器 -->
+                <!-- <div class="swiper-pagination"></div> -->
+
+                <!-- 如果需要导航按钮 -->
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+
+                <!-- 如果需要滚动条 -->
+                <div class="swiper-scrollbar"></div>
+            </div>
+        </div>
+        <!-- 左边轮播结束 -->
+        <!-- 右边详情开始 -->
+        <div class="big-right">
+            <!-- 1开始 -->
+            <div class="big-right-one">
+                <p>小米10至尊纪念版</p>
+                <p><i style="color:#ff4a00;">「购机赠小米定制T恤﹔最高享24期免息，低至221元起/期;加149元得199元55W立式风冷无线
+                        充」</i>120X超远变焦/120W秒充科技/120Hz刷新率＋240Hz采样率/骁龙865旗舰处理器/双模
+                    5G/10倍混合光学变焦/OIS光学防抖+EIS数字防抖/2000万超清前置相机/双串蝶式石墨烯基
+                    锂离子电池/等效4500mAh大电量/120W有线秒充+50W无线秒充+10W无线反充/WiFi6/多功
+                    能NFC/红外遥控</p>
+                <p>小米自营</p>
+                <p>5299元</p>
+            </div>
+            <!-- 1结束 -->
+            <!-- 2开始 -->
+            <div class="big-right-two">
+                <p>北京&nbsp;&nbsp;&nbsp;&nbsp;北京市&nbsp;&nbsp;&nbsp;&nbsp;海淀区&nbsp;&nbsp;&nbsp;&nbsp;清河街道&nbsp;&nbsp;&nbsp;&nbsp;修改
+                </p>
+                <p>有现货</p>
+            </div>
+            <!-- 2结束 -->
+            <!-- 3开始 -->
+            <div class="big-right-three">
+                <p>选择商品</p>
+              <br>
+                 <input type="number"   placeholder="数量"  class="opi1">
+                    <h1 style="display: none;"  id="1321324214324"></h1>
+                    
+                    <br>  <br>  <br>
+            <button class="pi1">加入购物车</button>
+                 <button class="pi1">查看购物车</button>
+            </div>
+            <!-- 3结束 -->
+            <!-- 4开始 -->
+            <div class="big-right-four">
+                <p>选择版本</p>
+                <a href="javascript:;">8GB+256GB</a>
+                <a href="javascript:;">8GB+128GB</a>
+                <a href="javascript:;">12GB+256GB</a>
+                <a href="javascript:;">16GB+512GB</a>
+            </div>
+            <!-- 4结束 -->
+            <!-- 5开始 -->
+            <div class="big-right-five">
+                <p>选择小米提供的意外保护</p>
+                <p>了解意外保护 &lg; </p>
+            </div>
+            <!-- 5结束 -->
+            <!-- 意外服务开始 -->
+            <div class="big-right-six">
+                <div class="big-right-six-left">
+                    <div class="circle"></div>
+                </div>
+                <div class="big-right-six-right">
+                    <p>竟外处保障服务</p>
+                    <p>手机意外碎用进水/调玉等损坏</p>
+                    <p><input type="checkbox" />我已阅读<i style="color:#ff6700;cursor: pointer;">服务条款|常见问题</i></p>
+                </div>
+            </div>
+            <!-- 意外服务结束 -->
+            <!-- 总计开始 -->
+            <div class="big-right-last">
+                <p>小来10至尊纪念版 8GB+128GB 陶瓷黑
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    5299元</p>
+                <p>总计5299元</p>
+            </div>
+            <!-- 总计结束 -->
+            <!-- 按钮开始 -->
+            <div class="big-right-btn">
+                <p>加入购物车</p>
+            </div>
+            <!-- 按钮结束 -->
+            <!-- 最下面开始 -->
+            <div class="big-right-thelast">
+                <a href="">小米自营</a>
+                <a href="">小米发货</a>
+                <a href="">7天无理由退货</a>
+                <a href="">运费说明</a>
+                <a href="">企业信息</a>
+                <br />
+                <a href="">售后服务政策</a>
+                <a href="">7天价格保护</a>
+            </div>
+            <!-- 最下面结束 -->
+        </div>
+        <!-- 右边详情结束 -->
+    </div>
+    <!-- 下面版心结束 -->
+
+    <!-- 价格说明开始 -->
+    <div class="price">
+        <!-- 价格版心开始 -->
+        <div class="price-word">
+            价格说明
+        </div>
+        <div class="price-main">
+            等可能会与您购物时展示的不一致，该价格仅供您参考。
+            划线价:商品展示的划横线价格为参考价，该价格可能是品牌专柜标价、商品吊牌价或由品牌供应商提供的正品零售价(如厂商指导价、建议零售价
+            等)或该商品在小米商城小米有品/天猫小米官方旗舰店曾经展示过的销售价;由于地区、时间的差异性和市场行情波动，品牌专柜标价、商品吊牌价
+        </div>
+        <!-- 价格版心结束 -->
+    </div>
+    <!-- 价格说明结束 -->
+
+    <!-- 底部开始 -->
+    <div class="footer">
+        <!-- 横条开始 -->
+        <div class="footer1">
+            <ul>
+                <li>预约维修服务</li>
+                <li>7天无理由退货<span>|</span></li>
+                <li>15天免费换货<span>|</span></li>
+                <li>满99元包邮<span>|</span></li>
+                <li>520余家售后网点<span>|</span></li>
+            </ul>
+        </div>
+        <!-- 横条结束 -->
+
+        <!-- 第二部分开始 -->
+        <div class="footer2">
+            <!-- 左边开始 -->
+            <div class="footer2-left">
+                <ul>
+                    <li>帮助中心</li>
+                    <li>帮助中心</li>
+                    <li>购物指南</li>
+                    <li>订单操作</li>
+                </ul>
+                <ul>
+                    <li>帮助中心</li>
+                    <li>帮助中心</li>
+                    <li>购物指南</li>
+                    <li>订单操作</li>
+                </ul>
+                <ul>
+                    <li>帮助中心</li>
+                    <li>帮助中心</li>
+                    <li>购物指南</li>
+                    <li>订单操作</li>
+                </ul>
+                <ul>
+                    <li>帮助中心</li>
+                    <li>帮助中心</li>
+                    <li>购物指南</li>
+                    <li>订单操作</li>
+                </ul>
+                <ul>
+                    <li>帮助中心</li>
+                    <li>帮助中心</li>
+                    <li>购物指南</li>
+                    <li>订单操作</li>
+                </ul>
+                <ul>
+                    <li>帮助中心</li>
+                    <li>帮助中心</li>
+                    <li>购物指南</li>
+                    <li>订单操作</li>
+                </ul>
+            </div>
+            <!-- 左边结束 -->
+            <!-- 右边开始 -->
+            <div class="footer2-right">
+                <p>400-100-5678</p>
+                <p>8:00-18:00(仅收市话费)</p>
+                <p>人工客服</p>
+                <p>关注小米</p>
+            </div>
+            <!-- 右边结束 -->
+        </div>
+        <!-- 第二部分结束 -->
+    </div>
+    <!-- 底部结束 -->
+
+
+
+    <div class="foot">
+        <!-- 备案开始 -->
+        <div class="footer-two">
+            <!-- 备案左开始 -->
+            <div class="footer-two-left">
+                <img src="../images/xmlogo.png" />
+            </div>
+            <!-- 备案左结束 -->
+            <!-- 备案右开始 -->
+            <div class="footer-two-right">
+                <p>小米商城|MIU川米家|米聊|多看|游戏|政企服务|小米天猫店|小米集团隐私政策|小米公司儿童信息保护规则小米商娀隐私政策|小米商城用户协议|问题反馈| SeletLocalion</p>
+                <p>mi.com京ICP证110507号京ICP备10046444号京公网安备11010802020134号京网文[2020]0276-042电</p>
+                <p>(京）网械平台备字(2018）第OOO05号互联网药品信息服务资格证(京)非经营性-2014-0D90营业执照店疗器械质量公告</p>
+                <p>增值电信业务许可证网络食品经营备案京食药网食备202010048食品经营许可证</p>
+                <p>违法和不良信息举报电话:171-5104-4404知识产权侵权投诉本网站所列数据，除特殊说明，所有数据均出自我司实验室测试</p>
+            </div>
+            <!-- 备案右结束 -->
+        </div>
+        <!-- 备案结束 -->
+    </div>
+</body>
+
+</html>

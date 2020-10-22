@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/jquery.min.js"></script>
+    <style>
+        table,div{
+            display: none;
+        }
+        img{
+            width:100px;
+            height:100px;
+        }
+        span{
+            float: left;
+            width: 24px;
+            height: 24px;
+            line-height: 24px;
+        }
+        table{width: 600px;text-align: center;border: gainsboro  1px solid;box-sizing: border-boxs;}
+           table pi1{width: 100px;}
+           table .op2{width: 200px;}
+           table .op3{width: 45px;}
+           table .op4{width: 150px;}
+           table .op5{width: 45px;}
+           table td{ border: 2px  black  2px; }
+           .add{width: 37px;height: 40px;margin-top:25px;border: 1px solid orange ;text-align: center;float: left;font-size: 20px;}
+           .jian{width: 37px;height: 40px;margin-top:25px;border: 1px solid orange ;text-align: center;float: right;font-size: 20px;}
+           .pol1{width: 65px;height: 40px;margin-top:25px;border: 1px solid black ;text-align: center;float: left;}
+  </style>
+</head>
+<body>
+    <h1>购物车</h1>
+    <table border="1px" width="600px" cellspacing="0" align="center">
+        <thead>
+            <tr>            
+                <th  class="pi1" >商品名称</th>
+                <th  class="op2">商品图片</th>
+                <th class="op3">单价</th>
+                <th  class="op4">数量</th>
+                <th  class="op5">操作</th>
+                
+        </thead>
+        <tbody>
+           
+        </tbody>
+    </table>
+    <div>
+        没有更多商品了
+    </div>
+
+    <script>
+        // 一打开购物车页面,展示购物车里面的商品
+        showTbody();
+        function showTbody(){
+            $.ajax({
+                // url:'http://localhost/project/cart/interface/showlist.php',
+                url:"../lib/cart/interface/showlist.php",
+                success:function(res){
+                    if(res.code){
+                        var arr = res.data;
+                        if(res.data){
+                            //如果有商品,table显示,div隐藏
+                            $('table').show();
+                            $('div').hide();
+                            //在table里面展示商品信息
+                            $('tbody').empty();
+                            $.each(arr,function(index,item){
+                                $('tbody').append(`<tr id="${item.product_id}">
+                                    <td>${item.product_name}</td>
+                                    <td>
+                                        <img src="${item.product_img}" alt="">
+                                    </td>
+                                    <td>${item.product_price}</td>
+                                    <td>
+                                        <span class='add'>+</span>
+                                        <span  class='pol1'>${item.product_num}</span>
+                                        <span class="jian">-</span>
+                                    </td>
+                                    <td class="del">删除</td>
+                                </tr>`)
+                            })
+                        }              
+
+                        
+                    }else{
+                        //如果没有商品,table隐藏,div显示
+                        $('table').hide();
+                        $('div').show();                       
+                    } 
+                },
+                dataType:'json',
+                cache:false
+            })
+        }
+
+        // 点击+增加一个商品数量,点击-减少一个商品数量
+        $('tbody').click(function(e){
+            var target = e.target;
+            // target是一个dom节点
+            if((target.className=='add')||(target.className=='jian')){
+                // 点击+增加一个商品数量,点击-减少一个商品数量
+                // 'http://localhost/project/cart/interface/updatewq.php'
+                $.ajax({
+                    url:'../lib/cart/interface/updatewq.php',
+                    data:{
+                        type:target.className,
+                        id:$(target).parents('tr').attr('id')
+                    },
+                    success:function(res){
+                        if(res.code){
+                            showTbody()
+                        }
+                    },
+                    dataType:'json'
+                })
+
+            }else if(target.className=='del'){
+                // 点击删除按钮删除一个商品
+                //http://localhost/project/cart/interface/delwq.php
+                $.ajax({
+                    url:'../lib/cart/interface/delwq.php',
+                    data:{
+                        id:$(target).parents('tr').attr('id')
+                    },
+                    success:function(res){
+                        if(res.code){
+                            showTbody()
+                        }
+                    },
+                    dataType:'json'
+                })
+            }
+        })
+    </script>
+</body>
+</html>
